@@ -9,6 +9,10 @@ use App\Http\Controllers\Api\InfoController;
 use App\Http\Controllers\Api\InternController;
 use App\Http\Controllers\Api\EvaluationController;
 
+Route::get('/test', function() {
+    return response()->json(['message' => 'Laravel is working!']);
+});
+
 Route::post('/login', [\App\Http\Controllers\Api\AuthController::class, 'login']);
 Route::middleware('auth:sanctum')->post('/logout', [\App\Http\Controllers\Api\AuthController::class, 'logout']);
 
