@@ -45,7 +45,12 @@ class Handler extends ExceptionHandler
      * @return \Symfony\Component\HttpFoundation\Response
      */
     public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
-    }
+{
+    // บังคับให้คืนค่า Error เป็น JSON ออกมาดูว่าติดอะไร
+    return response()->json([
+        'error_error' => $exception->getMessage(),
+        'file' => $exception->getFile(),
+        'line' => $exception->getLine()
+    ], 500);
+}
 }
