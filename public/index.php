@@ -11,10 +11,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 define('LARAVEL_START', microtime(true));
 
 // โหลด Autoloader
-require __DIR__.'/../vendor/autoload.php';
+require __DIR__.'../vendor/autoload.php';
 
 // โหลด Application Instance
-$app = require_once __DIR__.'/../bootstrap/app.php';
+$app = require_once __DIR__.'../bootstrap/app.php';
 
 // รันตัว Kernel
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
