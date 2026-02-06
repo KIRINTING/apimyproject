@@ -15,11 +15,11 @@ return [
     |
     */
 
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'infos', 'login'],
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://internproject-front.vercel.app/', 'https://apimyproject-production.up.railway.app'],
+    'allowed_origins' => ['https://internproject-front.vercel.app/'],
 
     'allowed_origins_patterns' => [],
 
@@ -29,6 +29,6 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => false,
+    'supports_credentials' => true,
 
 ];
