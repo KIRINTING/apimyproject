@@ -12,10 +12,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
 define('LARAVEL_START', microtime(true));
 
 // โหลด Autoloader (ใส่ / เพิ่มเข้าไปหลัง __DIR__)
-require __DIR__.'/../vendor/autoload.php';
+if (file_exists(__DIR__ . '/vendor/autoload.php')) {
+    require __DIR__ . '/vendor/autoload.php';
+} else {
+    require __DIR__ . '/../vendor/autoload.php';
+}
 
 // โหลด Application Instance (ใส่ / เพิ่มเข้าไปหลัง __DIR__)
-$app = require_once __DIR__.'/../bootstrap/app.php';
+$app = require_once __DIR__ . '/../bootstrap/app.php';
 
 // รันตัว Kernel
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
