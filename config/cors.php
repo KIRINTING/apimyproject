@@ -4,7 +4,7 @@ return [
     /*
     | ระบุ Path ที่ต้องการให้ใช้ CORS (ปกติคือ api ทุกตัว)
     */
-    'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', 'login', 'logout', 'infos'],
 
     'allowed_methods' => ['*'],
 
