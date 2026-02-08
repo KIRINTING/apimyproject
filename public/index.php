@@ -29,7 +29,6 @@ if (file_exists(__DIR__ . '/bootstrap/app.php')) {
 } else {
     header('HTTP/1.1 500 Internal Server Error');
     echo "<h1>Error: bootstrap/app.php not found</h1>";
-    exit(1);
 }
 
 // รันตัว Kernel
