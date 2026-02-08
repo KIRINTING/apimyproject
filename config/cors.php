@@ -1,25 +1,20 @@
 <?php
 
 return [
-
     /*
-    |--------------------------------------------------------------------------
-    | Cross-Origin Resource Sharing (CORS) Configuration
-    |--------------------------------------------------------------------------
-    |
-    | Here you may configure your settings for cross-origin resource sharing
-    | or "CORS". This determines what cross-origin operations may execute
-    | in web browsers. You are free to adjust these settings as needed.
-    |
-    | To learn more: https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS
-    |
+    | ระบุ Path ที่ต้องการให้ใช้ CORS (ปกติคือ api ทุกตัว)
     */
-
-    'paths' => ['api/*', 'sanctum/csrf-cookie'],
+    'paths' => ['api/*', 'sanctum/csrf-cookie', 'infos'], // เพิ่ม 'infos' เข้าไปถ้าไม่ได้อยู่ในกลุ่ม api
 
     'allowed_methods' => ['*'],
 
-    'allowed_origins' => ['https://internproject-front.vercel.app'],
+    /*
+    | ใส่ URL ของ Angular ที่ Vercel ของคุณที่นี่
+    | หรือใช้ '*' เพื่อทดสอบ (ถ้าใช้ '*' ต้องตั้ง supports_credentials เป็น false)
+    */
+    'allowed_origins' => [
+        'https://internproject-front.vercel.app',
+    ],
 
     'allowed_origins_patterns' => [],
 
@@ -29,6 +24,5 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => true,
-
+    'supports_credentials' => true, // ถ้ามีการใช้ Token หรือ Session ต้องเป็น true
 ];
