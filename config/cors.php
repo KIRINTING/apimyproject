@@ -13,7 +13,7 @@ return [
     | หรือใช้ '*' เพื่อทดสอบ (ถ้าใช้ '*' ต้องตั้ง supports_credentials เป็น false)
     */
     'allowed_origins' => [
-        'https://internproject-front.vercel.app',
+        'https://internproject-front-es1pmhbjf-kirintings-projects.vercel.app',
     ],
 
     'allowed_origins_patterns' => [],
