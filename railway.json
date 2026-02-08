@@ -1,8 +1,0 @@
-{
-  "build": {
-    "builder": "NIXPACKS"
-  },
-  "deploy": {
-    "startCommand": "vendor/bin/heroku-php-apache2 public/ || php -S 0.0.0.0:$PORT -t public public/index.php"
-  }
-}

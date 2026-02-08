@@ -1,6 +1,0 @@
-[phases.setup]
-nixpkgsArchive = "23.11"
-pkgs = ["php81", "php81Packages.composer"]
-
-[phases.install]
-cmds = ["composer install --no-dev --optimize-autoloader"]
