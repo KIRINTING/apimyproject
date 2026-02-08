@@ -2,36 +2,25 @@
 
 define('LARAVEL_START', microtime(true));
 
-// โหลด Autoloader (ใส่ / เพิ่มเข้าไปหลัง __DIR__)
-// โหลด Autoloader (ใส่ / เพิ่มเข้าไปหลัง __DIR__)
-if (file_exists(__DIR__ . '/vendor/autoload.php')) {
-    require __DIR__ . '/vendor/autoload.php';
-} elseif (file_exists(__DIR__ . '/../vendor/autoload.php')) {
-    require __DIR__ . '/../vendor/autoload.php';
+// 1. ค้นหา Autoloader
+if (file_exists($a = __DIR__.'/vendor/autoload.php')) {
+    require $a;
+} elseif (file_exists($b = __DIR__.'/../vendor/autoload.php')) {
+    require $b;
 } else {
-    header('HTTP/1.1 500 Internal Server Error');
-    echo "<h1>Error: Autoload not found</h1>";
-    echo "<p>Checked paths:</p>";
-    echo "<ul>";
-    echo "<li>" . htmlspecialchars(__DIR__ . '/vendor/autoload.php') . "</li>";
-    echo "<li>" . htmlspecialchars(__DIR__ . '/../vendor/autoload.php') . "</li>";
-    echo "</ul>";
-    echo "<p>Please run <code>composer install</code> in the application root.</p>";
-    exit(1);
+    die("Error: ไม่พบโฟลเดอร์ vendor โปรดตรวจสอบว่าการ Build (Composer) สำเร็จหรือไม่");
 }
 
-// โหลด Application Instance (ใส่ / เพิ่มเข้าไปหลัง __DIR__)
-// โหลด Application Instance (ใส่ / เพิ่มเข้าไปหลัง __DIR__)
-if (file_exists(__DIR__ . '/bootstrap/app.php')) {
-    $app = require_once __DIR__ . '/bootstrap/app.php';
-} elseif (file_exists(__DIR__ . '/../bootstrap/app.php')) {
-    $app = require_once __DIR__ . '/../bootstrap/app.php';
+// 2. ค้นหา Application Instance
+if (file_exists($c = __DIR__.'/bootstrap/app.php')) {
+    $app = require_once $c;
+} elseif (file_exists($d = __DIR__.'/../bootstrap/app.php')) {
+    $app = require_once $d;
 } else {
-    header('HTTP/1.1 500 Internal Server Error');
-    echo "<h1>Error: bootstrap/app.php not found</h1>";
+    die("Error: ไม่พบ bootstrap/app.php");
 }
 
-// รันตัว Kernel
+// 3. รันระบบ Laravel
 $kernel = $app->make(Illuminate\Contracts\Http\Kernel::class);
 
 $response = $kernel->handle(
