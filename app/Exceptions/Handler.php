@@ -32,7 +32,7 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return void
      */
-    public function report(Exception $exception)
+    public function report(\Throwable $exception)
     {
         parent::report($exception);
     }
@@ -44,13 +44,13 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function render($request, Exception $exception)
-{
-    // บังคับให้คืนค่า Error เป็น JSON ออกมาดูว่าติดอะไร
-    return response()->json([
-        'error_error' => $exception->getMessage(),
-        'file' => $exception->getFile(),
-        'line' => $exception->getLine()
-    ], 500);
-}
+    public function render($request, \Throwable $exception)
+    {
+        // บังคับให้คืนค่า Error เป็น JSON ออกมาดูว่าติดอะไร
+        return response()->json([
+            'error_error' => $exception->getMessage(),
+            'file' => $exception->getFile(),
+            'line' => $exception->getLine()
+        ], 500);
+    }
 }
